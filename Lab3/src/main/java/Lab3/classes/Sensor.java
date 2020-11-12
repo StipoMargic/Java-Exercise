@@ -1,4 +1,8 @@
-package vj2.classes;
+package Lab3.classes;
+
+package Vjezba4_PUJ.classes;
+
+import org.json.JSONObject;
 
 public class Sensor {
     private String Description;
@@ -9,8 +13,10 @@ public class Sensor {
     private String UnitOfMeasurement;
     private Double CurrentValue = 0.0;
 
-    public Sensor(String description, String dataType, Integer factor, Integer lowerLimit, Integer upperLimit, String unitOfMeasurement)
-    {
+    public Sensor() {
+    }
+
+    public Sensor(String description, String dataType, Integer factor, Integer lowerLimit, Integer upperLimit, String unitOfMeasurement) {
         Description = description;
         DataType = dataType;
         Factor = factor;
@@ -19,14 +25,36 @@ public class Sensor {
         UnitOfMeasurement = unitOfMeasurement;
     }
 
-    public void RandomizeCurrentValue()
-    {
+    public void setDescription(String description) {
+        Description = description;
+    }
+
+    public void setDataType(String dataType) {
+        DataType = dataType;
+    }
+
+    public void setFactor(Integer factor) {
+        Factor = factor;
+    }
+
+    public void setLowerLimit(Integer lowerLimit) {
+        LowerLimit = lowerLimit;
+    }
+
+    public void setUpperLimit(Integer upperLimit) {
+        UpperLimit = upperLimit;
+    }
+
+    public void setUnitOfMeasurement(String unitOfMeasurement) {
+        UnitOfMeasurement = unitOfMeasurement;
+    }
+
+    public void RandomizeCurrentValue() {
         CurrentValue = (Math.random() * (((Double.valueOf(UpperLimit) / Factor) - (Double.valueOf(LowerLimit) / Factor)) + 1));
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "{ \"description\": \"" + Description +
                 "\", \"dataType\": \"" + DataType +
                 "\", \"factor\": \"" + Factor +
@@ -36,4 +64,3 @@ public class Sensor {
                 "\", \"currentValue\": \"" + CurrentValue + "\" }";
     }
 }
-                 

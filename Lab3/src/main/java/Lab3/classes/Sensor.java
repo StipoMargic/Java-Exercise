@@ -1,20 +1,17 @@
 package Lab3.classes;
 
-import org.json.JSONObject;
-
 public class Sensor {
     private String Description;
     private String DataType;
-    private Integer Factor;
-    private Integer LowerLimit;
-    private Integer UpperLimit;
+    private int Factor;
+    private int LowerLimit;
+    private int UpperLimit;
     private String UnitOfMeasurement;
-    private Double CurrentValue = 0.0;
+    private double CurrentValue = 0.0;
 
-    public Sensor() {
-    }
+    public Sensor() {}
 
-    public Sensor(String description, String dataType, Integer factor, Integer lowerLimit, Integer upperLimit, String unitOfMeasurement) {
+    public Sensor(String description, String dataType, int factor, int lowerLimit, int upperLimit, String unitOfMeasurement) {
         Description = description;
         DataType = dataType;
         Factor = factor;
@@ -31,15 +28,15 @@ public class Sensor {
         DataType = dataType;
     }
 
-    public void setFactor(Integer factor) {
+    public void setFactor(int factor) {
         Factor = factor;
     }
 
-    public void setLowerLimit(Integer lowerLimit) {
+    public void setLowerLimit(int lowerLimit) {
         LowerLimit = lowerLimit;
     }
 
-    public void setUpperLimit(Integer upperLimit) {
+    public void setUpperLimit(int upperLimit) {
         UpperLimit = upperLimit;
     }
 
@@ -48,17 +45,6 @@ public class Sensor {
     }
 
     public void RandomizeCurrentValue() {
-        CurrentValue = (Math.random() * (((Double.valueOf(UpperLimit) / Factor) - (Double.valueOf(LowerLimit) / Factor)) + 1));
-    }
-
-    @Override
-    public String toString() {
-        return "{ \"description\": \"" + Description +
-                "\", \"dataType\": \"" + DataType +
-                "\", \"factor\": \"" + Factor +
-                "\", \"lowerLimit\": \"" + LowerLimit +
-                "\", \"upperLimit\": \"" + UpperLimit +
-                "\", \"unitOfMeasurement\": \"" + UnitOfMeasurement +
-                "\", \"currentValue\": \"" + CurrentValue + "\" }";
+        CurrentValue = (Math.random() * ((UpperLimit / Factor) - (LowerLimit / Factor)) + 1);
     }
 }

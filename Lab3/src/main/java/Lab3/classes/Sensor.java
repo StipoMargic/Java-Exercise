@@ -1,7 +1,5 @@
 package Lab3.classes;
 
-package Vjezba4_PUJ.classes;
-
 import org.json.JSONObject;
 
 public class Sensor {

@@ -3,27 +3,29 @@ package com.example.lab4;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-public class Publisher {
+@Component
+public class Publisher extends Request {
     private MqttClient mqttClient;
 
-    public Publisher(String brokerAddress, String client) {
+    public void publish(Request request) {
         try {
-            this.mqttClient = new MqttClient(brokerAddress, client);
+            this.mqttClient = new MqttClient(request.getBrokerAddress(), request.getClient());
         } catch (MqttException e) {
             e.printStackTrace();
         }
-    }
 
-    public void publish(String data, String topic) {
         MqttMessage mqttMessage = new MqttMessage();
-        mqttMessage.setPayload(data.getBytes());
+        mqttMessage.setPayload(request.getMessage().getBytes());
         try {
             this.mqttClient.connect();
-            this.mqttClient.publish(topic, mqttMessage);
+            this.mqttClient.publish(request.getTopic(), mqttMessage);
             this.mqttClient.disconnect();
         } catch (MqttException e) {
             e.printStackTrace();
         }
     }
+
 }

@@ -1,17 +1,15 @@
 package com.example.lab4;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class SensorController {
-    @PostMapping(value = "/sensor")
-    public void createSensor(@RequestBody Sensor sensor) {
-        Publisher publisher = new Publisher(sensor.getBrokerAddress(), sensor.getClient());
-        publisher.publish(sensor.getMessage(), sensor.getTopic());
-    }
+    @Autowired
+    private Publisher publisher;
 
-    @GetMapping("/test")
-    public String test() {
-        return "str";
+    @PostMapping(value = "/sensor")
+    public void createSensor(@RequestBody Request request) {
+        publisher.publish(request);
     }
 }

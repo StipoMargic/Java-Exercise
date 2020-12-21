@@ -1,29 +1,30 @@
-package Classes;
+package Managers;
 
+import Classes.Sensor;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
-public class Publisher {
+import java.util.List;
 
-    private static String address;
+public class MQTTPublisher {
+    private static String BROKER;
     private MqttClient mqttClient;
+    private List<Sensor> sensors;
 
-    public Publisher(String address) {
-        this.address = address;
-    }
-
-    public void publishHTPP() {
-    }
-/*
-    public void publishMQTT(String data, String topic) {
+    public MQTTPublisher(String address, List<Sensor> sensors) {
+        this.BROKER = address;
+        this.sensors = sensors;
+        String client = "Stipo123";
         try {
-            mqttClient = new MqttClient(this.address, this.client);
+            mqttClient = new MqttClient(BROKER, client);
         } catch (MqttException e) {
             e.printStackTrace();
             System.exit(1);
         }
+    }
 
+    public void publish(String data, String topic) {
         MqttMessage mqttMessage = new MqttMessage();
         mqttMessage.setPayload(data.getBytes());
         try {
@@ -34,8 +35,4 @@ public class Publisher {
             e.printStackTrace();
         }
     }
-
-    public void setBroker(String address) {
-        this.address = address;
-    }*/
 }

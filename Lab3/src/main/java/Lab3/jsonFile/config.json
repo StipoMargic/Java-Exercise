@@ -1,8 +1,7 @@
 {
   "brokerAddress": "tcp://localhost:1883",
   "delay": "5",
-  "sensors": [
-    {
+  "sensors": [{
       "description": "Trenutna temperatura vode",
       "dataType": "int16",
       "factor": 10,

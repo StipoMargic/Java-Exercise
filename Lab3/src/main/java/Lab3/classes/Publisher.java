@@ -6,7 +6,7 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 public class Publisher {
     private static String BROKER;
-    private MqttClient mqttClient;
+    private MqttClient mqttClient;q
 
     public Publisher(String broker) {
         BROKER = broker;

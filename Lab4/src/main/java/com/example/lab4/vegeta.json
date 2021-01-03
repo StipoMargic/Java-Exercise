@@ -1,0 +1,6 @@
+{
+  "brokerAddress": "tcp://localhost:1883",
+  "message": "aaaaaaaaaaa",
+  "client": "ja",
+  "topic": "topic"
+}
